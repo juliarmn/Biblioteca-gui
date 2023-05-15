@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="206.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="238.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Procurar.png" />
+                    </image></ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="418.0">
+            <children>
+                <Label fx:id="tf_item" layoutX="23.0" layoutY="143.0" prefHeight="44.0" prefWidth="79.0" text="Item" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_titulo" layoutX="20.0" layoutY="188.0" text="título" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_sair" layoutX="309.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: #fcb436;" text="Sair" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="112.0" fitWidth="321.0" layoutX="43.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo2.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="tf_id" layoutX="202.0" layoutY="143.0" prefHeight="44.0" prefWidth="79.0" text="ID" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_autor" layoutX="25.0" layoutY="222.0" text="Autor" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_anoPublicacao" layoutX="23.0" layoutY="253.0" text="Ano de publicação" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="285.0" text="Emprestada:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="318.0" text="Disponível:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_procurar" layoutX="277.0" layoutY="124.0" mnemonicParsing="false" style="-fx-background-color: #f468b0;" text="Procurar" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+            <Label fx:id="tf_item1" layoutX="23.0" layoutY="47.0" prefHeight="44.0" prefWidth="286.0" text="Insira o ID ou título:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_titulo_ou_id" layoutX="14.0" layoutY="89.0" prefHeight="24.0" prefWidth="358.0" promptText="O pequeno príncipe ou 1234" />
+            <Label fx:id="alerta" layoutX="20.0" layoutY="124.0" prefHeight="33.0" prefWidth="210.0" textFill="#f20707">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_emprestada" layoutX="147.0" layoutY="285.0" text="Emprestada" textFill="#252428">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_disponivel" layoutX="153.0" layoutY="318.0" text="Disponível" textFill="#252428">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="18.0" />
+               </font>
+            </Label>
+            </children></AnchorPane>
+    </children>
+</HBox>

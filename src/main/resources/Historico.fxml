@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="206.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="210.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@historico.png" />
+                    </image></ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="418.0">
+            <children>
+                <Label fx:id="tf_item" layoutX="22.0" layoutY="71.0" prefHeight="44.0" prefWidth="79.0" text="Item" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_titulo" layoutX="29.0" layoutY="124.0" text="título" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_sair" layoutX="33.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #fcb436;" text="Sair" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="112.0" fitWidth="321.0" layoutX="43.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo2.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="tf_id" layoutX="250.0" layoutY="71.0" prefHeight="44.0" prefWidth="79.0" text="ID" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_autor" layoutX="29.0" layoutY="157.0" text="Autor" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="data_emp" layoutX="155.0" layoutY="188.0" text="Data Empréstimo" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_prox" layoutX="275.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ea1880;" text="Próximo" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Label fx:id="tf_autor1" layoutX="29.0" layoutY="188.0" text="Empréstimo:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_autor2" layoutX="29.0" layoutY="222.0" text="Devolvido em:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="data_real" layoutX="177.0" layoutY="222.0" text="Data real" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children></AnchorPane>
+    </children>
+</HBox>

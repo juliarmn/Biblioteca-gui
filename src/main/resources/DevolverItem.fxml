@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="194.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="238.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Devolucao.png" />
+                    </image></ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="407.0">
+            <children>
+                <Label layoutX="29.0" layoutY="87.0" prefHeight="44.0" prefWidth="208.0" text="ID ou Nome do item:" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_nome" layoutX="29.0" layoutY="138.0" prefHeight="27.0" prefWidth="319.0" promptText="ID ou Nome" />
+                <Button fx:id="button_sair" layoutX="269.0" layoutY="308.0" mnemonicParsing="false" style="-fx-background-color: #ea1880;" text="Sair" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="112.0" fitWidth="321.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo2.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="erro" layoutX="26.0" layoutY="66.0" prefHeight="27.0" prefWidth="119.0" textFill="#e11111" />
+                <Label layoutX="29.0" layoutY="165.0" prefHeight="44.0" prefWidth="208.0" text="Digite a data:" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_dia" layoutX="29.0" layoutY="209.0" prefHeight="37.0" prefWidth="44.0" promptText="DD" />
+                <Label layoutX="85.0" layoutY="206.0" prefHeight="44.0" prefWidth="20.0" text="/" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_mes" layoutX="111.0" layoutY="209.0" prefHeight="37.0" prefWidth="44.0" promptText="MM" />
+                <Label layoutX="169.0" layoutY="206.0" prefHeight="44.0" prefWidth="20.0" text="/" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_ano" layoutX="189.0" layoutY="210.0" prefHeight="37.0" prefWidth="56.0" promptText="AAAA" />
+                <Label fx:id="alerta" alignment="CENTER" layoutX="95.0" layoutY="250.0" prefHeight="44.0" prefWidth="208.0" textAlignment="CENTER" textFill="#f50a0a">
+                    <font>
+                        <Font name="Noto Sans Mono Regular" size="13.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_devolver" layoutX="57.0" layoutY="308.0" mnemonicParsing="false" style="-fx-background-color: #c7da48;" text="Devolver" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children></AnchorPane>
+    </children>
+</HBox>
