@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="julia.biblioteca.gui.controllers.CadastroProfessorController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="206.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="238.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@verDadosUser.png" />
+                    </image></ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="441.0">
+            <children>
+                <Button fx:id="button_sair" layoutX="33.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ce97c1;" text="Sair" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="112.0" fitWidth="321.0" layoutX="43.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo2.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="tf_autor" layoutX="36.0" layoutY="116.0" prefHeight="25.0" prefWidth="131.0" text="Nome:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_anoPublicacao" layoutX="29.0" layoutY="182.0" prefHeight="37.0" prefWidth="169.0" text="Matrícula:" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_extra1" layoutX="186.0" layoutY="183.0" prefHeight="25.0" prefWidth="189.0" text="matrícula" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tf_extra2" layoutX="214.0" layoutY="238.0" prefHeight="37.0" prefWidth="179.0" text="emprestimos" textFill="#252428">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_prox" layoutX="275.0" layoutY="333.0" mnemonicParsing="false" style="-fx-background-color: #ea1880;" text="Próximo" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="18.0" />
+                    </font>
+                </Button>
+            <Label fx:id="tf_anoPublicacao1" layoutX="29.0" layoutY="238.0" prefHeight="37.0" prefWidth="179.0" text="Empréstimos:" textFill="#252428">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_extra11" layoutX="120.0" layoutY="116.0" prefHeight="35.0" prefWidth="260.0" text="nome" textFill="#252428">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="24.0" />
+               </font>
+            </Label>
+            </children></AnchorPane>
+    </children>
+</HBox>

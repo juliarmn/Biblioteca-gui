@@ -1,8 +1,10 @@
-module com.example.demo {
+module julia.biblioteca {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.demo to javafx.fxml;
-    exports com.example.demo;
+    opens julia.biblioteca to javafx.fxml;
+    exports julia.biblioteca;
+    exports julia.biblioteca.gui.controllers;
+    opens julia.biblioteca.gui.controllers to javafx.fxml;
 }

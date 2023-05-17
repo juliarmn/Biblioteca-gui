@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="julia.biblioteca.gui.controllers.CadastroAlunoController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="263.0">
+         <children>
+            <ImageView fitHeight="420.0" fitWidth="241.0" layoutX="-13.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Aluno.png" />
+               </image></ImageView>
+            <Label fx:id="alarme" alignment="CENTER" layoutX="12.0" layoutY="25.0" prefHeight="37.0" prefWidth="209.0" textAlignment="CENTER" textFill="#ee0202">
+               <font>
+                  <Font name="Noto Sans Mono Regular" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="418.0">
+         <children>
+            <ImageView fitHeight="87.0" fitWidth="159.0" layoutX="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@alunoCadastro.png" />
+               </image></ImageView>
+            <Label layoutX="25.0" layoutY="51.0" prefHeight="44.0" prefWidth="79.0" text="Nome:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="158.0" text="CPF:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_nome" layoutX="24.0" layoutY="82.0" prefHeight="27.0" prefWidth="316.0" promptText="Nome" />
+            <TextField fx:id="tf_cpf" layoutX="24.0" layoutY="180.0" prefHeight="27.0" prefWidth="316.0" promptText="000.000.000-00" />
+            <Label layoutX="24.0" layoutY="207.0" text="Senha:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="tf_password" layoutX="24.0" layoutY="229.0" prefHeight="27.0" prefWidth="316.0" promptText="senha" />
+            <Label layoutX="26.0" layoutY="109.0" text="Matricula:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_matricula" layoutX="24.0" layoutY="131.0" prefHeight="27.0" prefWidth="316.0" promptText="0000000" />
+            <Label layoutX="24.0" layoutY="256.0" text="Curso:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_curso" layoutX="24.0" layoutY="278.0" prefHeight="27.0" prefWidth="316.0" promptText="Curso" />
+            <TextField fx:id="tf_periodo" layoutX="24.0" layoutY="327.0" prefHeight="27.0" prefWidth="316.0" promptText="matutino" />
+            <Label layoutX="26.0" layoutY="305.0" text="Periodo:" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="button_cadastro" layoutX="138.0" layoutY="363.0" mnemonicParsing="false" style="-fx-background-color: #ce97c1;" text="Cadastrar">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <Region prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</HBox>

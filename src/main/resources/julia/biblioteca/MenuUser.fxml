@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="julia.biblioteca.gui.controllers.MenuUserController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="186.0">
+            <children>
+                <ImageView fitHeight="400.0" fitWidth="212.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@menuUser.png" />
+                    </image></ImageView>
+            <Label fx:id="alerta" layoutX="12.0" layoutY="45.0" prefHeight="73.0" prefWidth="166.0" textFill="#ff1919">
+               <font>
+                  <Font name="Noto Sans Mono Regular" size="13.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="416.0">
+            <children>
+                <Button fx:id="button_deslogin" layoutX="276.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: #b6b1e6;" text="Deslogar" textFill="#3b2c5a">
+                    <font>
+                        <Font name="Noto Sans Mono Bold" size="16.0" />
+                    </font>
+                </Button>
+            <Button fx:id="button_op1" layoutX="47.0" layoutY="73.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ver empréstimos" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op5" layoutX="48.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Pagar multa" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op2" layoutX="47.0" layoutY="105.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Renovar" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op3" layoutX="47.0" layoutY="136.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Devolução" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op7" layoutX="48.0" layoutY="262.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Buscar item" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op6" layoutX="48.0" layoutY="231.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ver itens da biblioteca" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_op8" layoutX="47.0" layoutY="294.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Histórico" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="73.0" fitWidth="159.0" layoutX="134.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@menu.png" />
+               </image></ImageView>
+            <Button fx:id="button_op4" layoutX="47.0" layoutY="168.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Empréstimo" textFill="#3b2c5a">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="16.0" />
+               </font>
+            </Button>
+            </children></AnchorPane>
+    </children>
+</HBox>
