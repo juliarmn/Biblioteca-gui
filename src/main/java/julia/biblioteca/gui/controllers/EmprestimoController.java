@@ -1,7 +1,9 @@
 package julia.biblioteca.gui.controllers;
+
 import javafx.scene.control.Label;
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.Item;
+import julia.biblioteca.classes.Validacoes;
+import julia.biblioteca.classes.itens.Item;
 import julia.biblioteca.excessoes.InformacoesInvalidas;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
@@ -29,9 +31,9 @@ public class EmprestimoController implements Initializable {
     private Button button_sair;
     @FXML
     private Label alerta;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("aaaa");
         button_emprestar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -43,25 +45,36 @@ public class EmprestimoController implements Initializable {
                     if (item == null) {
                         alerta.setText("Não existe");
                     } else {
-                        if (item.getQuantidadeDisponivel() != 0 && biblioteca.getContaLogada().getMulta() == 0) {
-                            try {
-                                biblioteca.adicionarEmprestimo(item, tf_dia.getText(), tf_mes.getText(), tf_ano.getText());
-                                alerta.setText("Emprestado");
-                                tf_ano.setText("");
-                                tf_dia.setText("");
-                                tf_mes.setText("");
-                                tf_nome.setText("");
-                            } catch (InformacoesInvalidas e) {
-                                alerta.setText(e.getMessage());
-                            }
-
-                        }
                         if (item.getQuantidadeDisponivel() == 0) {
                             alerta.setText("Indisponível");
                         }
                         if (biblioteca.getContaLogada().getMulta() != 0) {
-                            alerta.setText("Multas pendentes, não pode emprestar");
+                            alerta.setText("Multas pendentes, erro.");
                         }
+                        if (item.getQuantidadeDisponivel() != 0 && biblioteca.getContaLogada().getMulta() == 0) {
+
+                            if (!Validacoes.validaAno(Integer.parseInt(tf_ano.getText())) || !Validacoes.validaMes(
+                                    Integer.parseInt(tf_mes.getText())) || !Validacoes.validaDia(Integer.parseInt(tf_dia.getText()), Integer.parseInt(tf_mes.getText()), Integer.parseInt(tf_ano.getText()))) {
+                                tf_ano.setText("");
+                                tf_dia.setText("");
+                                tf_mes.setText("");
+                                tf_nome.setText("");
+                                alerta.setText("Data Inávlida");
+                            } else {
+                                try {
+                                    biblioteca.adicionarEmprestimo(item, tf_dia.getText(), tf_mes.getText(), tf_ano.getText());
+                                    alerta.setText("Emprestado");
+                                    tf_ano.setText("");
+                                    tf_dia.setText("");
+                                    tf_mes.setText("");
+                                    tf_nome.setText("");
+                                } catch (InformacoesInvalidas e) {
+                                    alerta.setText(e.getMessage());
+                                }
+
+                            }
+                        }
+
                     }
                 }
             }

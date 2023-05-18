@@ -1,6 +1,6 @@
 package julia.biblioteca.gui.controllers;
 
-import julia.biblioteca.classes.AcessorTecnico;
+import julia.biblioteca.classes.usuarios.AcessorTecnico;
 import julia.biblioteca.classes.Biblioteca;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
@@ -15,6 +15,10 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Classe para cadastrar um Acessor técnico, conectando com FXML
+ * Initializable é implementado
+ */
 public class CadastroAcessorTecnicoController implements Initializable {
     @FXML
     private TextField tf_nome;
@@ -31,6 +35,14 @@ public class CadastroAcessorTecnicoController implements Initializable {
     private Button button_cadastro;
     @FXML
     private Label alarme;
+
+    /**
+     * Sobrescreve o método da interface
+     * Quando aperta em cadastro, cadastra o usuário -> chama um método de biblioteca para adicionar em uma lista de usuário
+     * Quando aperta em sair vai para a página de login novamente.
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -40,9 +52,11 @@ public class CadastroAcessorTecnicoController implements Initializable {
                     Biblioteca biblioteca = DBUtils.getDisplay().getBiblioteca();
                     if (tf_nome.getText().equals("") || tf_matricula.getText().equals("") || tf_cpf.getText().equals("") ||
                             tf_password.getText().equals("") || tf_secao.getText().equals("")) {
+                        // Alerta na tela de que o usuário tentou cadastrar sem nenhuma informação ou faltando alguma
                         alarme.setText("Campos vazios");
                     } else {
                         try {
+                            // Tenta adicionar usuário
                             biblioteca.adicionarUser(new AcessorTecnico(tf_nome.getText(), Integer.parseInt(tf_matricula.getText()),
                                     tf_cpf.getText(), tf_password.getText(), tf_secao.getText()));
                         } catch (Exception e) {

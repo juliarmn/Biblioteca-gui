@@ -1,13 +1,18 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.usuarios;
 
 /**
  * SuperUsuario é a classe que representa algum funcionário da biblioteca, que pode fazer operações diferentes de um usuário comum.
  * Ele herda a super classe Usuario.
  */
 
+import julia.biblioteca.classes.itens.CD;
+import julia.biblioteca.classes.itens.Item;
+import julia.biblioteca.classes.itens.Livro;
+import julia.biblioteca.classes.itens.Revista;
+
 import java.util.Scanner;
 
-public class SuperUsuario extends Usuario{
+public class SuperUsuario extends Usuario {
     /**
      * Possui um atributo inteiro que representa o código de identificação do funcionário.
      */
@@ -93,5 +98,7 @@ public class SuperUsuario extends Usuario{
             return cd;
         }
     }
+
+
 
 }

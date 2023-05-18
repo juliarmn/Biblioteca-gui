@@ -18,6 +18,11 @@
                         <Font name="Noto Sans Mono Regular" size="13.0" />
                     </font>
                 </Label>
+            <Label fx:id="alarme" alignment="CENTER" layoutX="31.0" layoutY="40.0" prefHeight="47.0" prefWidth="124.0" textAlignment="CENTER" textFill="#ff0404">
+               <font>
+                  <Font name="Noto Sans Mono Regular" size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="400.0" prefWidth="426.0">

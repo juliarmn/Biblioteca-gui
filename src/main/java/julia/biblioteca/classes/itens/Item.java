@@ -1,4 +1,5 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.itens;
+import julia.biblioteca.emprestimo.Emprestavel;
 import julia.biblioteca.excessoes.ItemIndisponivel;
 import julia.biblioteca.excessoes.ItemNaoEmprestado;
 
@@ -29,8 +30,13 @@ public abstract class Item implements Emprestavel {
      * Guarda a infromação de quantos itens foram emprestados.
     */
     private int quantidadeEmprestada;
-
+    /**
+     * tipo estático para contagem
+     */
     private static int count = 0;
+    /**
+     * INteiro para salvar o id
+     */
     private int id;
 
     /**
@@ -154,7 +160,7 @@ public abstract class Item implements Emprestavel {
             throw new ItemIndisponivel("Esse item está indisponível");
         } else {
             setQuantidadeDisponivel(getQuantidadeDisponivel() - 1);
-            setQuantidadeEmprestada(getQuantidadeDisponivel() + 1);
+            setQuantidadeEmprestada(getQuantidadeEmprestada() + 1);
             return true;
         }
     }

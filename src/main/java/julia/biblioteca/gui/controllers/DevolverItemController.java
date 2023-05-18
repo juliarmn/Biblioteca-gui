@@ -2,7 +2,8 @@ package julia.biblioteca.gui.controllers;
 
 import javafx.scene.control.Label;
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.Emprestimo;
+import julia.biblioteca.classes.Validacoes;
+import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.excessoes.ItemNaoEmprestado;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
@@ -40,12 +41,25 @@ public class DevolverItemController implements Initializable {
                 if (tf_nome.getText().equals("") && tf_dia.getText().equals("") && tf_mes.getText().equals("") && tf_ano.getText().equals("")) {
                     alerta.setText("Preencha todos os campos");
                 } else {
-                    try {
-                        Emprestimo emprestimo = biblioteca.procurarEmprestimo(tf_nome.getText());
-                        biblioteca.devolverGUI(emprestimo, tf_dia.getText(), tf_mes.getText(), tf_ano.getText());
-                        alerta.setText("Devolvido");
-                    } catch (ItemNaoEmprestado e) {
-                        alerta.setText(e.getMessage());
+                    if (!Validacoes.validaAno(Integer.parseInt(tf_ano.getText())) || !Validacoes.validaMes(
+                            Integer.parseInt(tf_mes.getText())) || !Validacoes.validaDia(Integer.parseInt(tf_dia.getText()), Integer.parseInt(tf_mes.getText()), Integer.parseInt(tf_ano.getText()))) {
+                        tf_ano.setText("");
+                        tf_dia.setText("");
+                        tf_mes.setText("");
+                        tf_nome.setText("");
+                        alerta.setText("Data Inávlida");
+                    } else {
+                        try {
+                            Emprestimo emprestimo = biblioteca.procurarEmprestimo(tf_nome.getText());
+                            biblioteca.devolverGUI(emprestimo, tf_dia.getText(), tf_mes.getText(), tf_ano.getText());
+                            tf_ano.setText("");
+                            tf_dia.setText("");
+                            tf_mes.setText("");
+                            tf_nome.setText("");
+                            alerta.setText("Devolvido");
+                        } catch (ItemNaoEmprestado e) {
+                            alerta.setText(e.getMessage());
+                        }
                     }
                 }
             }

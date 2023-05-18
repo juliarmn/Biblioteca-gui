@@ -1,4 +1,6 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.emprestimo;
+
+import julia.biblioteca.classes.itens.Item;
 
 import java.util.Date;
 

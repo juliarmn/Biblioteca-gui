@@ -1,6 +1,8 @@
 package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.*;
+import julia.biblioteca.classes.usuarios.Usuario;
+import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -87,7 +89,7 @@ public class VerItensController implements Initializable {
         tf_id.setText(String.valueOf(emprestimo.getItem().getId()));
         tf_titulo.setText(emprestimo.getItem().getTitulo());
         tf_autor.setText(emprestimo.getItem().getAutor());
-        data_emp.setText(String.valueOf(emprestimo.getDataEmprestimo()));
-        data_dev.setText(String.valueOf(emprestimo.getDataDevolucaoPrevista()));
+        data_emp.setText(Validacoes.printarData(emprestimo.getDataEmprestimo()));
+        data_dev.setText(Validacoes.printarData(emprestimo.getDataDevolucaoPrevista()));
     }
 }

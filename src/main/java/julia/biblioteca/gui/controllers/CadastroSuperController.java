@@ -1,7 +1,7 @@
 package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.SuperUsuario;
+import julia.biblioteca.classes.usuarios.SuperUsuario;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,7 +48,7 @@ public class CadastroSuperController implements Initializable {
                         } catch (Exception e) {
                             alarme.setText(e.getMessage());
                         }
-                        DBUtils.changeScene(event, "superMenu.fxml", "Login");
+                        DBUtils.changeScene(event, "sample.fxml", "Login");
                     }
 
                 }

@@ -1,9 +1,9 @@
 package julia.biblioteca.gui;
 
 import julia.biblioteca.HelloApplication;
-import julia.biblioteca.classes.AcessorTecnico;
-import julia.biblioteca.classes.Aluno;
-import julia.biblioteca.classes.Professor;
+import julia.biblioteca.classes.usuarios.AcessorTecnico;
+import julia.biblioteca.classes.usuarios.Aluno;
+import julia.biblioteca.classes.usuarios.Professor;
 import julia.biblioteca.classes.DisplayBiblioteca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

@@ -13,6 +13,11 @@
                     <image>
                         <Image url="@SuperUsuario.png" />
                     </image></ImageView>
+            <Label fx:id="alarme" alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="44.0" prefWidth="165.0" textAlignment="CENTER" textFill="#f50202">
+               <font>
+                  <Font name="Noto Sans Mono Regular" size="13.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane prefHeight="200.0" prefWidth="418.0">

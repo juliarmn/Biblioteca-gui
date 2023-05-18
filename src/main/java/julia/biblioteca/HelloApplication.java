@@ -7,7 +7,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Método Main para aplicar os arquivos FXML
+ */
 public class HelloApplication extends Application {
+    /**
+     * Inicializar o arquivo da biblioteca
+     * @param stage (Stage)
+     * @throws IOException excessão lançada caso dẽ erradoa leitura de arquivo.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sample.fxml"));
@@ -18,6 +26,10 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+    /**
+     * método main
+     * @param args (String)
+     */
     public static void main(String[] args) {
         launch();
     }

@@ -3,14 +3,13 @@ package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.Biblioteca;
 import julia.biblioteca.classes.DisplayBiblioteca;
-import julia.biblioteca.classes.Emprestimo;
+import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
 
 public class MenuUserController {
 
@@ -150,9 +149,9 @@ public class MenuUserController {
                     }
                 }
                 if (temDevolucao) {
-                    DBUtils.changeScene(actionEvent, "verEmprestimos.fxml", "Emprestimos");
+                    DBUtils.changeScene(actionEvent, "Historico.fxml", "Histórico");
                 } else {
-                    alerta.setText("Sem empréstimos");
+                    alerta.setText("Sem devoluções");
                 }
             }
         });

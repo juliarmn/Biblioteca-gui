@@ -1,5 +1,8 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.usuarios;
 
+import julia.biblioteca.classes.*;
+import julia.biblioteca.classes.itens.Item;
+import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.excessoes.InformacoesInvalidas;
 import julia.biblioteca.excessoes.ItemNaoEmprestado;
 
@@ -16,7 +19,6 @@ public abstract class Usuario {
 
     public Validacoes validacao = new Validacoes();
 
-    ConectaConta conta;
     private static int id = 0;
 
     public Usuario(String nome, int matricula, String cpf, String senha) {
@@ -26,7 +28,6 @@ public abstract class Usuario {
         this.cpf = cpf;
         this.senha = senha;
         id += 100;
-        this.conta = null;
     }
 
     public String getCpf() {
@@ -171,62 +172,12 @@ public abstract class Usuario {
         return (this.senha.equals(senha));
     }
 
-    public void pagarMulta() {
-        Scanner scan = new Scanner(System.in);
-        int op;
-        do {
-            System.out.println("Deseja pagar por pix (1) ou por cartão de crédito (2)?");
-            op = scan.nextInt();
-            if (op < 1 || op > 2) {
-                System.out.println("Digite uma opção válida");
-            }
-        } while (op < 1 || op > 2);
-        scan.nextLine();
-        if (op == 1) {
-            System.out.println("Passe um pix para o cnpj 63.486.153/0001-00");
-            try {
-                this.conta = ConectaBanco.conectarConta(scan);
-            } catch (InformacoesInvalidas e) {
-                System.out.println(e.getMessage());
-                return;
-            }
-            double valor = ConectaBanco.pagarPorPix(scan);
-            this.multa -= valor;
-        } else {
-            if (this.conta == null) {
-                try {
-                    this.conta = ConectaBanco.conectarConta(scan);
-                } catch (InformacoesInvalidas e) {
-                    System.out.println(e.getMessage());
-                    return;
-                }
-            }
-            System.out.println("Preencha os dados do cartão: ");
-            System.out.println("Digite seu CPF");
-            String cpf = scan.nextLine();
-            System.out.println("Digite o número do cartão");
-            int numCartao = scan.nextInt();
-            System.out.println("Digite o ano de vencimento");
-            int ano = scan.nextInt();
-            System.out.println("Digite o cvv");
-            int cvv = scan.nextInt();
-            scan.nextLine();
-            System.out.println("Digite sua senha");
-            String senha = Arrays.toString(System.console().readPassword());
-            double valor = ConectaBanco.pagarCredito(this.multa, cpf, senha, cvv, ano, numCartao);
-            this.multa -= valor;
-        }
 
-    }
 
     public void verHistorico() {
         for (Emprestimo emprestimo : getEmprestimo()) {
             if (emprestimo.isDevolvido()) ;
         }
-    }
-
-    public void desconectarConta() {
-        ConectaBanco.desconectarConta();
     }
 
     public void emprestarGUI(Item item, String dia, String mes, String ano) throws InformacoesInvalidas {
@@ -240,13 +191,15 @@ public abstract class Usuario {
             emprestimo = new Emprestimo(item, dataDeEmprestimo, dataDeDevolucaoPrevista);
             emprestimo.setDevolvido(false);
             emprestimos.add(emprestimo);
+            emprestimo.getItem().emprestarItem();
         } catch (Exception e) {
             throw new InformacoesInvalidas("Erro ao adicionar");
         }
     }
 
-    public void devolverGUI(Emprestimo emprestimo, String dia, String mes, String ano) {
+    public void devolverGUI(Emprestimo emprestimo, String dia, String mes, String ano) throws ItemNaoEmprestado {
         emprestimo.setDataDevolucaoReal(new Date(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia)));
+
         if (emprestimo.getDataDevolucaoPrevista().compareTo(emprestimo.getDataDevolucaoReal()) < 0) {
             long diferencaEmMilissegundos = Math.abs(emprestimo.getDataDevolucaoReal().getTime() - emprestimo.getDataDevolucaoPrevista().getTime());
             long diferencaEmDias = TimeUnit.DAYS.convert(diferencaEmMilissegundos, TimeUnit.MILLISECONDS);
@@ -254,6 +207,7 @@ public abstract class Usuario {
             calcularMulta(diferencaEmDias);
         }
         emprestimo.setDevolvido(true);
+        emprestimo.getItem().devolverItem();
     }
 
     public Emprestimo procurarEmprestimo(int identificador) throws ItemNaoEmprestado {

@@ -1,10 +1,10 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.usuarios;
 
 /**
  *  Aluno é uma subclasse específica de usuário.
  *  É um dos tipos de usuário da biblioteca.
  */
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
     /**
      * String que guarda a informação do curso do aluno.
      */
@@ -71,5 +71,14 @@ public class Aluno extends Usuario{
         double multa = quantidadeDeDias * 5;
         this.setMulta(getMulta() + multa);
         return multa;
+    }
+
+    /**
+     * Consegur imprimir seu tipo (tipo do usuário)
+     * @return String indicando o tipo
+     */
+    @Override
+    public String toString() {
+        return "Aluno";
     }
 }

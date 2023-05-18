@@ -1,9 +1,11 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.itens;
+
+import julia.biblioteca.classes.itens.Item;
 
 /**
  * Classe que herda a classe Item, sendo um item específico presente na biblioteca.
  */
-public class CD extends Item{
+public class CD extends Item {
     /**
      * Atributo que guarda a informação do volume do CD.
      */

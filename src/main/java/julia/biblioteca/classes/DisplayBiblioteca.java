@@ -1,4 +1,12 @@
 package julia.biblioteca.classes;
+import julia.biblioteca.classes.itens.CD;
+import julia.biblioteca.classes.itens.Item;
+import julia.biblioteca.classes.itens.Livro;
+import julia.biblioteca.classes.itens.Revista;
+import julia.biblioteca.classes.usuarios.AcessorTecnico;
+import julia.biblioteca.classes.usuarios.Aluno;
+import julia.biblioteca.classes.usuarios.Professor;
+import julia.biblioteca.classes.usuarios.SuperUsuario;
 import julia.biblioteca.excessoes.InformacoesInvalidas;
 import javafx.event.ActionEvent;
 import julia.biblioteca.gui.DBUtils;
@@ -109,7 +117,7 @@ public class DisplayBiblioteca {
 
     private void telaUsuarioGui(ActionEvent event) {
         if (biblioteca.getSuperLogado() != null) {
-            DBUtils.changeScene(event, "MenuSuper.fxml", "MenuSuper");
+            DBUtils.changeScene(event, "MenuSuper.fxml", "Menu Super");
         } else if (biblioteca.getContaLogada() != null) {
             DBUtils.changeScene(event, "MenuUser.fxml", "Menu");
         }

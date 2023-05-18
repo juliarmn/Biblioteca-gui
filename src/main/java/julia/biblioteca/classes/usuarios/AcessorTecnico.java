@@ -1,11 +1,11 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.usuarios;
 
 /**
  * Acessor Técnico é uma subclasse de Uuusário, herdando seus métodos e atributos.
  * É um usuário específico  da biblioteca.
  */
 
-public class AcessorTecnico extends Usuario{
+public class AcessorTecnico extends Usuario {
     /**
      * Atributo que guarda o tipo da seção que o acessor está associado (String).
      */
@@ -53,5 +53,14 @@ public class AcessorTecnico extends Usuario{
         double multa = quantidadeDeDias * 5 * 1.15;
         this.setMulta(getMulta() + multa);
         return multa;
+    }
+
+    /**
+     * Consegur imprimir seu tipo (tipo do usuário)
+     * @return String indicando o tipo
+     */
+    @Override
+    public String toString() {
+        return "Acessor Técnico";
     }
 }

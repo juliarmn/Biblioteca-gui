@@ -1,10 +1,12 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.itens;
+
+import julia.biblioteca.classes.itens.Item;
 
 /**
  * Livro é uma subclasse de Item (super classe)
  * herda seus atributos e métodos
  */
-public class Livro extends Item{
+public class Livro extends Item {
     /**
      * Guarda o valor da editora (String).
      */

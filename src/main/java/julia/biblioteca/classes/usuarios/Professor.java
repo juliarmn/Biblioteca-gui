@@ -1,4 +1,4 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.usuarios;
 
 /**
  * A classe Professor é uma subclasse da classe Usuario, herdando seus atributos e métodos.
@@ -39,5 +39,14 @@ public class Professor extends Usuario {
         double multa = quantidadeDeDias * 5 * 1.25;
         this.setMulta(getMulta() + multa);
         return multa;
+    }
+
+    /**
+     * Consegur imprimir seu tipo (tipo do usuário)
+     * @return String indicando o tipo
+     */
+    @Override
+    public String toString() {
+        return "Professor";
     }
 }

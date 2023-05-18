@@ -75,7 +75,7 @@
             <TextField fx:id="tf_titulo_ou_id" layoutX="14.0" layoutY="89.0" prefHeight="24.0" prefWidth="358.0" promptText="O pequeno príncipe ou 1234" />
             <Label fx:id="alerta" layoutX="20.0" layoutY="124.0" prefHeight="33.0" prefWidth="210.0" textFill="#f20707">
                <font>
-                  <Font name="Noto Sans Mono Bold" size="13.0" />
+                  <Font name="Noto Sans Mono Regular" size="13.0" />
                </font>
             </Label>
             <Label fx:id="tf_emprestada" layoutX="147.0" layoutY="285.0" text="Emprestada" textFill="#252428">

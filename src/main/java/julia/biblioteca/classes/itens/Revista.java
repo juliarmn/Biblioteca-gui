@@ -1,9 +1,11 @@
-package julia.biblioteca.classes;
+package julia.biblioteca.classes.itens;
+
+import julia.biblioteca.classes.itens.Item;
 
 /**
  * Classe Revista que herda atributos e métodos da super classe Item
  */
-public class Revista extends Item{
+public class Revista extends Item {
     /**
      * Atributo inteiro que representa o volume da revista
      */

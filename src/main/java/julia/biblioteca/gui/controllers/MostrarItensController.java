@@ -1,10 +1,10 @@
 package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.Item;
-import julia.biblioteca.classes.Livro;
-import julia.biblioteca.classes.Revista;
-import julia.biblioteca.classes.CD;
+import julia.biblioteca.classes.itens.Item;
+import julia.biblioteca.classes.itens.Livro;
+import julia.biblioteca.classes.itens.Revista;
+import julia.biblioteca.classes.itens.CD;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

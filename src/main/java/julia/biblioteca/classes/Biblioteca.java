@@ -5,6 +5,13 @@ package julia.biblioteca.classes;
  * Dados de toda a biblioteca (Itens que possui e usuários).
  */
 
+import julia.biblioteca.classes.itens.CD;
+import julia.biblioteca.classes.itens.Item;
+import julia.biblioteca.classes.itens.Livro;
+import julia.biblioteca.classes.itens.Revista;
+import julia.biblioteca.classes.usuarios.SuperUsuario;
+import julia.biblioteca.classes.usuarios.Usuario;
+import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.excessoes.InformacoesInvalidas;
 import julia.biblioteca.excessoes.ItemIndisponivel;
 import julia.biblioteca.excessoes.ItemNaoEmprestado;
@@ -22,8 +29,8 @@ public class Biblioteca {
     private ArrayList<SuperUsuario> funcionarios = new ArrayList<>();
     SuperUsuario superLogado;
 
-    private String senhaSuper = "anadfthu";
-    private int cod = 1987666;
+    private String senhaSuper = "2";
+    private int cod = 2;
     public Biblioteca(String nome, String cnpj) {
         this.nome = nome;
         this.cnpj = cnpj;
@@ -82,26 +89,6 @@ public class Biblioteca {
         return cod;
     }
 
-    public void mostrarItens() {
-        for(Item item : itens) {
-            if (item instanceof Revista) {
-                System.out.println("Revista:");
-                System.out.println(item.getId() + " " + item.getTitulo() + " " + item.getAutor() + " " + item.getAnoPublicacao() +
-                        " " + ((Revista) item).getNumero() + " " + ((Revista) item).getVolume());
-            }
-            else if (item instanceof CD) {
-                System.out.println("CD:");
-                System.out.println(item.getId() + " " + item.getTitulo() + " " + item.getAutor() + " " + item.getAnoPublicacao() +
-                        " " + ((CD) item).getVolume() + " " + ((CD) item).getGravadora());
-            }
-            else {
-                System.out.println("Livro:");
-                System.out.println(item.getId() + " " + item.getTitulo() + " " + item.getAutor() + " " + item.getAnoPublicacao() +
-                        " " + ((Livro) item).getEditora() + " " + ((Livro) item).getIsbn());
-            }
-            System.out.println("--------------------------------------");
-        }
-    }
 
     public Item buscarItem(String titulo) {
         int id = -1;
@@ -197,6 +184,11 @@ public class Biblioteca {
     public void addFunc(SuperUsuario user) {
         funcionarios.add(user);
     }
+
+    /**
+     * Adiciona o item de estrada da GUI na lista de itens da biblioteca
+     * @param item Item
+     */
     public void adicionarItem(Item item) {
         itens.add(item);
     }
@@ -277,13 +269,7 @@ public class Biblioteca {
      * Caso não, envia uma mensagem e sai do método.
      */
 
-    public void pagarMulta()  {
-        if (this.contaLogada.getMulta() == 0) {
-            System.out.println("Não há multa a pagar");
-            return;
-        }
-        this.contaLogada.pagarMulta();
-    }
+
 
     /**
      * Busca pelo CPF na lista de Super Usuários para verificar no login se é um usuário comum ou um administrador.
@@ -366,6 +352,9 @@ public class Biblioteca {
     public void adicionarItem() {
         getItens().add(this.superLogado.adicionarItem());
     }
+    public void adicionarItemGUI(Item item) {
+        getItens().add(item);
+    }
 
     //Métodos para GUI
     public void loginGui(String nome,String cpf, String senha) throws InformacoesInvalidas {
@@ -413,6 +402,11 @@ public class Biblioteca {
             contaLogada.renovarTodosGUI();
     }
 
+    /**
+     * Adiciona o usuário na lista de usuários
+     * @param user Usuario
+     * @throws Exception Caso o usuário já exista
+     */
     public void adicionarUser(Usuario user) throws Exception {
         for (Usuario u : getUsuarios()) {
             if (u.getCpf().equals(user.getCpf()) || u.getMatricula() == user.getMatricula()) {
@@ -427,7 +421,7 @@ public class Biblioteca {
                 throw new Exception("Já existe esse usuário");
             }
         }
-        usuarios.add(user);
+        funcionarios.add(user);
     }
 
     public void SuperUserAcessoCadastro(int cod, String senha) throws InformacoesInvalidas {

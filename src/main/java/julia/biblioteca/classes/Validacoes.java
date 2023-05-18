@@ -1,5 +1,8 @@
 package julia.biblioteca.classes;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Classe criada para  validar algumas informações.
  * Faz a validação a data inserida pelo usuário.
@@ -13,7 +16,7 @@ public class Validacoes {
      * @return boolean que indica se o usuário inseriu uma data válida
      */
 
-    public boolean validaAno(int ano) {
+    public static boolean validaAno(int ano) {
         if (ano < 2010 || ano > 2023) {
             return false;
         }
@@ -25,7 +28,7 @@ public class Validacoes {
      * @param mes que o usuário digitou
      * @return boolean se o mês for válido ou não
      */
-    public boolean validaMes(int mes) {
+    public static boolean validaMes(int mes) {
         return mes >= 1 && mes <= 12;
     }
 
@@ -38,7 +41,7 @@ public class Validacoes {
      * @param mes inseirod pelo usuário
      * @return boolean que indica se o dia inserido está correto ou não
      */
-    public boolean validaDia(int dia, int ano, int mes) {
+    public static boolean validaDia(int dia, int ano, int mes) {
         boolean bissexto;
         //Ano
 
@@ -62,4 +65,15 @@ public class Validacoes {
         }
 
     }
+
+    /**
+     * pinta a data de uma forma formatada
+     * @param data tipo Date
+     * @return String formatada
+     */
+    public static String printarData(Date data) {
+        SimpleDateFormat dataBonita = new SimpleDateFormat("dd/MM/yyyy");
+        return dataBonita.format(data);
+    }
 }
+

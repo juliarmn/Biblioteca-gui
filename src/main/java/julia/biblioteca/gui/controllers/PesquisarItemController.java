@@ -1,7 +1,7 @@
 package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.Item;
+import julia.biblioteca.classes.itens.Item;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

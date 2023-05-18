@@ -1,7 +1,7 @@
 package julia.biblioteca.gui.controllers;
 
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.Professor;
+import julia.biblioteca.classes.usuarios.Professor;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,6 +15,10 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller para o FXML de cadastro de professor Initializable
+ * Implementa a interface
+ */
 public class CadastroProfessorController implements Initializable {
     @FXML
     private TextField tf_nome;
