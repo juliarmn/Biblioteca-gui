@@ -66,13 +66,6 @@ public abstract class Item implements Emprestavel {
     }
 
     /**
-     * Modifica o valor presente no atributo de título.
-     * @param titulo (String) novo valor.
-     */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-    /**
      * Acessar o valor do autor do objeto.
      * @return autor (String)
      */
@@ -95,13 +88,7 @@ public abstract class Item implements Emprestavel {
     public int getAnoPublicacao() {
         return anoPublicacao;
     }
-    /**
-     * Modifica o valor presente no atributo de ano de publicação.
-     * @param anoPublicacao (int) novo valor.
-     */
-    public void setAnoPublicacao(int anoPublicacao) {
-        this.anoPublicacao = anoPublicacao;
-    }
+
 
     /**
      * Acessar o valor da quantidade disponível do objeto.

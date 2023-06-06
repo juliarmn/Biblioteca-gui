@@ -37,13 +37,7 @@ public class Livro extends Item {
     public String getEditora() {
         return editora;
     }
-    /**
-     * Permite alterar o valor do editora.
-     * @param editora (String) -> novo valor de editora
-     */
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
+
     /**
      * Permite visualizar o valor do isbn.
      * @return (String) isbn.
@@ -51,13 +45,7 @@ public class Livro extends Item {
     public String getIsbn() {
         return isbn;
     }
-    /**
-     * Permite alterar o valor do isbn.
-     * @param isbn (String) -> novo valor de isbn
-     */
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+
     /**
      * Método sobrescrito sa super classe
      * Transformar o nome da classe para String (mostrar qual a classe que herdou)

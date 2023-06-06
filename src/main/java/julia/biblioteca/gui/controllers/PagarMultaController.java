@@ -1,5 +1,6 @@
 package julia.biblioteca.gui.controllers;
 
+import javafx.scene.control.PasswordField;
 import julia.biblioteca.classes.Biblioteca;
 import julia.biblioteca.gui.DBUtils;
 import javafx.event.ActionEvent;
@@ -13,18 +14,42 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller para o pagamento da multa que implementa o Initializable
+ */
 public class PagarMultaController implements Initializable {
+    /**
+     * Label multa -> substituído pela multa do usuário
+     */
     @FXML
     private Label label_multa;
+    /**
+     * TextField da senha
+     */
     @FXML
-    private TextField tf_senha;
+    private PasswordField tf_senha;
+    /**
+     * BUtton para pagar -> chama método que seta a multa como 0
+     */
     @FXML
     private Button button_pagar;
+    /**
+     * Button para retornar ao menu
+     */
     @FXML
     private Button button_voltar;
+    /**
+     * Alerta se houver erro
+     */
     @FXML
     private Label alerta;
 
+    /**
+     * Botão pagar chama um método que seta a multa como 0
+     * Botão sair retorna ao menu
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Biblioteca biblioteca = DBUtils.getDisplay().getBiblioteca();

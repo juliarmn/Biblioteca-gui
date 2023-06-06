@@ -9,6 +9,10 @@ import julia.biblioteca.excessoes.ItemNaoEmprestado;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Classe usuário que implementa alguns métodos
+ * Classe abstrata
+ */
 public abstract class Usuario {
     private String nome;
     private int matricula;
@@ -21,6 +25,13 @@ public abstract class Usuario {
 
     private static int id = 0;
 
+    /**
+     * Constructor
+     * @param nome String nome
+     * @param matricula String matrícula
+     * @param cpf String cpf
+     * @param senha String senha
+     */
     public Usuario(String nome, int matricula, String cpf, String senha) {
         this.nome = nome;
         this.matricula = matricula;
@@ -30,160 +41,94 @@ public abstract class Usuario {
         id += 100;
     }
 
+    /**
+     * Retorna o CPF do usuário
+     * @return String
+     */
     public String getCpf() {
         return cpf;
     }
 
+    /**
+     * Retorna o nome
+     * @return String nome
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Modifica o nome
+     * @param nome String nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * Retorna a matrícula
+     * @return int
+     */
     public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
-
+    /**
+     * Lista de empréstimos do usuário
+     * @return a lista
+     */
     public ArrayList<Emprestimo> getEmprestimo() {
         return emprestimos;
     }
 
-    public void setEmprestimo(ArrayList<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-    }
-
+    /**
+     * Retorna a multa do usuário
+     * @return double multa
+     */
     public double getMulta() {
         return multa;
     }
 
-
+    /**
+     * MOdifica o valor da multa
+     * @param multa double
+     */
     public void setMulta(double multa) {
         this.multa = multa;
     }
 
-    //public abstract double calcularMulta();
-
+    /**
+     * Método abstrato para calcular multa
+     * Cada subclasse implementa esse método de forma diferente
+     * @param diferencaDias long
+     * @return multa (double)
+     */
     public abstract double calcularMulta(long diferencaDias);
 
-    private Emprestimo buscaEmprestimo() throws ItemNaoEmprestado {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o ID do item que quer devolver: ");
-        int id = scan.nextInt();
-        for (Emprestimo emprestimo : emprestimos) {
-            if (emprestimo.getItem().getId() == id) {
-                return emprestimo;
-            }
-        }
-        throw new ItemNaoEmprestado("Esse item não foi emprestado");
-    }
 
-    public void devolucao(Emprestimo emprestimo) throws ItemNaoEmprestado {
-        Scanner scan = new Scanner(System.in);
-        int dia, mes, ano;
-        do {
-            System.out.print("Insira o dia de hoje: ");
-            dia = scan.nextInt();
-            System.out.print("Insira o mês de hoje: ");
-            mes = scan.nextInt();
-            System.out.print("Insira o ano de hoje: ");
-            ano = scan.nextInt();
-            if (!validacao.validaAno(ano) || !validacao.validaMes(mes) || !validacao.validaDia(dia, ano, mes)) {
-                System.out.println("Data inválida");
-            }
-        } while (!validacao.validaAno(ano) || !validacao.validaMes(mes) || !validacao.validaDia(dia, ano, mes));
-        mes--; //ENUM
-        ano -= 1900;
-
-        emprestimo.setDataDevolucaoReal(new Date(ano, mes, dia));
-        if (emprestimo.getDataDevolucaoPrevista().compareTo(emprestimo.getDataDevolucaoReal()) < 0) {
-            long diferencaEmMilissegundos = Math.abs(emprestimo.getDataDevolucaoReal().getTime() - emprestimo.getDataDevolucaoPrevista().getTime());
-            long diferencaEmDias = TimeUnit.DAYS.convert(diferencaEmMilissegundos, TimeUnit.MILLISECONDS);
-
-            System.out.println("A data de devolução passou em " + diferencaEmDias + " dias");
-            calcularMulta(diferencaEmDias);
-            System.out.println("Você tem uma multa de " + this.multa);
-        }
-        emprestimo.setDevolvido(true);
-    }
-
-    public void renovarItem(int id) throws ItemNaoEmprestado {
-        for (Emprestimo e : getEmprestimo()) {
-            if (e.getItem().getId() == id) {
-                Calendar calendario = Calendar.getInstance();
-                calendario.setTime(e.getDataDevolucaoPrevista());
-                calendario.add(Calendar.DAY_OF_MONTH, 10);
-                Date dataSomada = calendario.getTime();
-                e.setDataDevolucaoPrevista(dataSomada);
-                return;
-            }
-        }
-        throw new ItemNaoEmprestado("Esse item não está nos seus empréstimos");
-    }
-
-    public void renovarTodos() throws ItemNaoEmprestado {
-        for (Emprestimo emprestimo : getEmprestimo()) {
-            Calendar calendario = Calendar.getInstance();
-            calendario.setTime(emprestimo.getDataDevolucaoPrevista());
-            calendario.add(Calendar.DAY_OF_MONTH, 10);
-            Date dataSomada = calendario.getTime();
-            emprestimo.setDataDevolucaoPrevista(dataSomada);
-        }
-        if (getEmprestimo() == null) {
-            throw new ItemNaoEmprestado("Não tem nenhum empréstimo na conta");
-        }
-    }
-
-    public void adicionarEmprestimo(Item item) {
-        Emprestimo emprestimo;
-        Scanner scan = new Scanner(System.in);
-        int dia, mes, ano;
-        do {
-            System.out.print("Insira o dia de hoje: ");
-            dia = scan.nextInt();
-            System.out.print("Insira o mês de hoje: ");
-            mes = scan.nextInt();
-            System.out.print("Insira o ano de hoje: ");
-            ano = scan.nextInt();
-            if (!validacao.validaAno(ano) || !validacao.validaMes(mes) || !validacao.validaDia(dia, ano, mes)) {
-                System.out.println("Data inválida");
-            }
-        } while (!validacao.validaAno(ano) || !validacao.validaMes(mes) || !validacao.validaDia(dia, ano, mes));
-        mes--; //ENUM
-        ano -= 1900;
-
-        Date dataDeEmprestimo = new Date(ano, mes, dia);
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(dataDeEmprestimo);
-        calendario.add(Calendar.DAY_OF_MONTH, 10);
-        Date dataDeDevolucaoPrevista = calendario.getTime();
-
-        emprestimo = new Emprestimo(item, dataDeEmprestimo, dataDeDevolucaoPrevista);
-        emprestimo.setDevolvido(false);
-        emprestimos.add(emprestimo);
-    }
-
+    /**
+     * Verifica a senha do usuário
+     * @param senha String -> inserida pelo usuário
+     * @return boolean
+     */
     public boolean verificarSenha(String senha) {
         return (this.senha.equals(senha));
     }
 
-
-
-    public void verHistorico() {
-        for (Emprestimo emprestimo : getEmprestimo()) {
-            if (emprestimo.isDevolvido()) ;
-        }
-    }
-
+    /**
+     * Permite realizar o empréstimo
+     * Verifica a data inserida
+     * Seta a data de devolução em 10 dias
+     * @param item Item a ser adicionado
+     * @param dia int dia
+     * @param mes int mes
+     * @param ano int ano
+     * @throws InformacoesInvalidas se as informações inseridas estiverem incorretas (inválidas)
+     */
     public void emprestarGUI(Item item, String dia, String mes, String ano) throws InformacoesInvalidas {
         Emprestimo emprestimo;
         try {
-            Date dataDeEmprestimo = new Date(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia));
+            Date dataDeEmprestimo = new Date(Integer.parseInt(ano) - 1900, Integer.parseInt(mes) - 1, Integer.parseInt(dia));
             Calendar calendario = Calendar.getInstance();
             calendario.setTime(dataDeEmprestimo);
             calendario.add(Calendar.DAY_OF_MONTH, 10);
@@ -197,8 +142,18 @@ public abstract class Usuario {
         }
     }
 
+    /**
+     * Método para devolver
+     * Calcula a diferença de dias
+     * Se passou da data calcula a multa
+     * @param emprestimo Emprestimo
+     * @param dia int dia
+     * @param mes int mes
+     * @param ano int ano
+     * @throws ItemNaoEmprestado se o item devolvido não tiver sido emprestado
+     */
     public void devolverGUI(Emprestimo emprestimo, String dia, String mes, String ano) throws ItemNaoEmprestado {
-        emprestimo.setDataDevolucaoReal(new Date(Integer.parseInt(ano), Integer.parseInt(mes), Integer.parseInt(dia)));
+        emprestimo.setDataDevolucaoReal(new Date(Integer.parseInt(ano)-1900, Integer.parseInt(mes)-1, Integer.parseInt(dia)));
 
         if (emprestimo.getDataDevolucaoPrevista().compareTo(emprestimo.getDataDevolucaoReal()) < 0) {
             long diferencaEmMilissegundos = Math.abs(emprestimo.getDataDevolucaoReal().getTime() - emprestimo.getDataDevolucaoPrevista().getTime());
@@ -210,6 +165,12 @@ public abstract class Usuario {
         emprestimo.getItem().devolverItem();
     }
 
+    /**
+     * Procura o empréstimo na conta
+     * @param identificador ID
+     * @return o Emprestimo achado
+     * @throws ItemNaoEmprestado se o item não tiver sido emprestado
+     */
     public Emprestimo procurarEmprestimo(int identificador) throws ItemNaoEmprestado {
 
         for (Emprestimo e : getEmprestimo()) {
@@ -221,6 +182,12 @@ public abstract class Usuario {
         throw new ItemNaoEmprestado("Item não emprestado");
     }
 
+    /**
+     * Procura o empréstimo do id inserido
+     * @param identificador int id
+     * @return Emprestimo do item
+     * @throws ItemNaoEmprestado se não tiver esse empŕestimo
+     */
     public Emprestimo procurarEmprestimo(String identificador) throws ItemNaoEmprestado {
 
         for (Emprestimo e : getEmprestimo()) {
@@ -233,6 +200,10 @@ public abstract class Usuario {
 
     }
 
+    /**
+     * Renova todos os itens da GUI -> adiciona mais 10 dias
+     * @throws ItemNaoEmprestado se não tiver empréstimos
+     */
     public void renovarTodosGUI() throws ItemNaoEmprestado {
 
         boolean temEmprestado = false;

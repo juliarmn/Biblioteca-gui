@@ -16,39 +16,68 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controllers para mostrar os itens
+ * Implementa Initializable
+ */
 public class MostrarItensController implements Initializable {
-
+    /**
+     * Label do tipo do item -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_item;
-
+    /**
+     * Label do título -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_titulo;
-
+    /**
+     * Button botão para voltar para o menu
+     */
     @FXML
     private Button button_sair;
-
-//    @FXML
-//    private ImageView imageView_logo;
-
+    /**
+     * Label do ID -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_id;
-
+    /**
+     * Label do autor -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_autor;
-
+    /**
+     * Label do ano de publicação -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_anoPublicacao;
-
+    /**
+     * Label do extra 1 -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_extra1;
-
+    /**
+     * Label do extra 2 -> substituido pelo dado oriundo dos itens da biblioteca
+     */
     @FXML
     private Label tf_extra2;
-
+    /**
+     * Button botão para ir para o próximo
+     */
     @FXML
     private Button button_prox;
+    /**
+     * Variável estática para contar os itens a serem listados
+     */
     public static int i;
 
+    /**
+     * Implementa o Initializable
+     * Com o botão próximo ele conta os itens da biblioteca e chama um método para mostrar os dados deles
+     * No botão sair retorna para o menu
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Biblioteca biblioteca = DBUtils.getDisplay().getBiblioteca();

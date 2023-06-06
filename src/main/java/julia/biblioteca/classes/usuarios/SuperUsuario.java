@@ -58,47 +58,6 @@ public class SuperUsuario extends Usuario {
         return 0;
     }
 
-    /**
-     * Método que pega do usuário as informações do novo item e cria novas instâncias
-     * @return novo Item para ser adicionado na biblioteca
-     */
-
-    public Item adicionarItem () {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o tipo do item");
-        String tipo = scan.nextLine();
-        System.out.println("Digite o titulo");
-        String titulo = scan.nextLine();
-        System.out.println("Digite o autor");
-        String autor = scan.nextLine();
-        System.out.println("Digite o ano de publicação");
-        int anoPublicacao = scan.nextInt();
-        System.out.println("Digite a quantidade disponível");
-        int quantidadeDisponivel = scan.nextInt();
-        if (tipo.equals("Livro")) {
-            System.out.println("Digite a editora");
-            String editora = scan.nextLine();
-            System.out.println("Digite o isbn");
-            String isbn = scan.nextLine();
-            Livro livro = new Livro(titulo, autor, anoPublicacao, quantidadeDisponivel, editora, isbn);
-            return livro;
-        } else if (tipo.equals("Revista")) {
-            System.out.println("Digite o volume");
-            int volume = scan.nextInt();
-            System.out.println("Digite o número");
-            int numero = scan.nextInt();
-            Revista revista = new Revista(titulo, autor, anoPublicacao, quantidadeDisponivel, volume, numero);
-            return revista;
-        } else {
-            System.out.println("Digite o volume");
-            int volume = scan.nextInt();
-            System.out.println("Digite a gravadora");
-            String gravadora = scan.nextLine();
-            CD cd = new CD(titulo, autor, anoPublicacao, quantidadeDisponivel, volume, gravadora);
-            return cd;
-        }
-    }
-
 
 
 }

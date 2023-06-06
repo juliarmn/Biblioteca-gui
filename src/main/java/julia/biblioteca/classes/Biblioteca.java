@@ -1,10 +1,4 @@
 package julia.biblioteca.classes;
-
-/**
- * Classe cuja função é o gerenciamento da biblioteca. Conecta o DisplayBanco aos Itens e Usuários.
- * Dados de toda a biblioteca (Itens que possui e usuários).
- */
-
 import julia.biblioteca.classes.itens.CD;
 import julia.biblioteca.classes.itens.Item;
 import julia.biblioteca.classes.itens.Livro;
@@ -18,7 +12,10 @@ import julia.biblioteca.excessoes.ItemNaoEmprestado;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Classe cuja função é o gerenciamento da biblioteca. Conecta o DisplayBanco aos Itens e Usuários.
+ * Dados de toda a biblioteca (Itens que possui e usuários).
+ */
 public class Biblioteca {
     private String nome;
     private String cnpj;
@@ -29,70 +26,117 @@ public class Biblioteca {
     private ArrayList<SuperUsuario> funcionarios = new ArrayList<>();
     SuperUsuario superLogado;
 
-    private String senhaSuper = "2";
-    private int cod = 2;
+    private String senhaSuper = "frgthyj";
+    private int cod = 123456;
+
+    /**
+     * Contructor
+     * @param nome da biblioteca (String)
+     * @param cnpj da biblioteca (String)
+     */
     public Biblioteca(String nome, String cnpj) {
         this.nome = nome;
         this.cnpj = cnpj;
         contaLogada = null;
     }
 
+    /**
+     * Método para obter a lista de funcionários
+     * @return lista de funcionários
+     */
     public ArrayList<SuperUsuario> getFuncionarios() {
         return funcionarios;
     }
 
+    /**
+     * Obter o nome da biblioteca
+     * @return String nome
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Setar/ modificar o nome da biblioteca
+     * @param nome String novo nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
+    /**
+     * Obtem a conta logada
+     * @return Uusario logado
+     */
     public Usuario getContaLogada() {
         return contaLogada;
     }
 
+    /**
+     * Modifica a conta logada
+     * @param contaLogada Usuario
+     */
     public void setContaLogada(Usuario contaLogada) {
         this.contaLogada = contaLogada;
     }
 
+    /**
+     * Obtem a lista de itens
+     * @return lista de itens
+     */
     public ArrayList<Item> getItens() {
         return itens;
     }
 
+    /**
+     * Lista de usuários
+     * @return lista dos usuários
+     */
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
 
+    /**
+     * Retorna o super usuário logado
+     * @return Superusuário
+     */
     public SuperUsuario getSuperLogado() {
         return superLogado;
     }
 
+    /**
+     * MOdifica o valor do super logado
+     * @param superLogado SuperUsuario
+     */
     public void setSuperLogado(SuperUsuario superLogado) {
         this.superLogado = superLogado;
     }
 
+    /**
+     * Retorna a senha de segurança
+     * @return String senha
+     */
     public String getSenhaSuper() {
         return senhaSuper;
     }
-
+    /**
+     * Retorna o código de segurança
+     * @return int cod
+     */
     public int getCod() {
         return cod;
     }
 
-
+    /**
+     * BUsca o item
+     * Verifica se é apenas números que o usuário inseriu (aí porcura por ID)
+     * Verifica se o usuário inseriu String com letras também -> procura por nome
+     * @param titulo (String) título
+     * @return Item buscado
+     */
     public Item buscarItem(String titulo) {
         int id = -1;
-        if (verificaNumero(titulo)) {
+        if (verificaNum(titulo)) {
             id = Integer.valueOf(titulo);
         }
         for(Item item : itens) {
@@ -102,22 +146,13 @@ public class Biblioteca {
         }
         return null;
     }
-    private static boolean verificaNumero(String str) {
-        if (str == null || str.length() == 0) {
-            return false;
-        }
 
-        return str.matches("[0-9]+");
-    }
-    public Item buscarItem(int id) {
-        for(Item item : itens) {
-            if (item.getId() == id) {
-                return item;
-            }
-        }
-        return null;
-    }
 
+    /**
+     * Busca o item -> verifica se será por ID ou nome
+     * @param busca String
+     * @return Item buscado
+     */
     public Item buscarItemGui(String busca) {
         int id = -1;
         if (verificaNum(busca)) {
@@ -130,7 +165,11 @@ public class Biblioteca {
         }
         return null;
     }
-
+    /**
+     * Verifica se a String contém apenas números
+     * @param str (String enviada)
+     * @return boolean
+     */
     private boolean verificaNum(String str) {
         if (str == null || str.length() == 0) {
             return false;
@@ -138,6 +177,11 @@ public class Biblioteca {
         return str.matches("[0-9]+");
     }
 
+    /**
+     * BUsca o empréstimo por id
+     * @param id (INT)
+     * @return retrna o Emprestimo buscado
+     */
     public Emprestimo buscarEmprestimo(int id) {
         for(Emprestimo emprestimo : contaLogada.getEmprestimo()) {
             if (emprestimo.getItem().getId() == id && !emprestimo.isDevolvido()) {
@@ -147,43 +191,7 @@ public class Biblioteca {
         return null;
     }
 
-    public void emprestarItem() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o nome do item que queres emprestar");
-        String nome = scan.nextLine();
-        Item item = buscarItem(nome);
-        if (item != null) {
-            if (contaLogada.getMulta() > 0) {
-                System.out.println("Não pode emprestar (MULTA PENDENTE!!!)");
-            } else {
-                try {
-                    item.emprestarItem();
-                    contaLogada.adicionarEmprestimo(item);
-                } catch (ItemIndisponivel e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        }
-    }
 
-    public void devolverItem() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o id do item que quer devolver");
-        int id = scan.nextInt();
-        Emprestimo emprestimo = buscarEmprestimo(id);
-        if (emprestimo != null) {
-                try {
-                    emprestimo.getItem().devolverItem();
-                    contaLogada.devolucao(emprestimo);
-                } catch (ItemNaoEmprestado e) {
-                    System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    public void addFunc(SuperUsuario user) {
-        funcionarios.add(user);
-    }
 
     /**
      * Adiciona o item de estrada da GUI na lista de itens da biblioteca
@@ -193,88 +201,20 @@ public class Biblioteca {
         itens.add(item);
     }
 
-    public boolean logarUsuario(String nome, String cpf, String senha) throws InformacoesInvalidas {
 
-            for (SuperUsuario user : getFuncionarios()) {
-                if (user.getNome().equals(nome) && user.getCpf().equals(cpf)) {
-                    if (user.verificarSenha(senha)) {
-                        this.contaLogada = user;
-                        return true;
-                    } else {
-                        throw new InformacoesInvalidas("Não foi possível logar (senha inválida)");
-                    }
-                }
-            }
-        throw new InformacoesInvalidas("Não foi possível logar (informações inválidas)");
-    }
-
+    /**
+     * Adiciona o usuário
+     * @param user usuario
+     */
     public void adicionarUsuario(Usuario user) {
         usuarios.add(user);
     }
 
-    public void consultarEmprestimo() {
-        for (Emprestimo emprestimo : contaLogada.getEmprestimo()) {
-            if (!emprestimo.isDevolvido()) {
-                System.out.println("Tipo de emprestimo: " + emprestimo.getItem().toString());
-                System.out.println("Título: " + emprestimo.getItem().getTitulo());
-                System.out.println("Autor: " + emprestimo.getItem().getAutor());
-                System.out.println("ID: " + emprestimo.getItem().getId());
-                System.out.println("Ano publicação" + emprestimo.getItem().getAnoPublicacao());
-                System.out.println("Data de emprestimo: " + emprestimo.getDataEmprestimo());
-                System.out.println("Data de devolução prevista: " + emprestimo.getDataDevolucaoPrevista());
-            }
-        }
-        if (contaLogada.getMulta() > 0) {
-            System.out.println("Existem multas pendentes");
-        }
-    }
-
-    public void consultarMulta() {
-        if (contaLogada.getMulta() == 0) {
-            System.out.println("Usuário não possui nenhuma multa pendente");
-        } else {
-            System.out.println("Sua multa é de " + contaLogada.getMulta() + " reais");
-        }
-    }
-
-    public void renovarTodos() {
-        try {
-            contaLogada.renovarTodos();
-        } catch (ItemNaoEmprestado e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * Função que renova 1 item por ID
-     * Procura e vẽ se esse item existe na biblioteca.
-     * @param id
-     */
-//TODO: arrumar aqui
-    public void renovarItem (int id) {
-        for (Item item : getItens()) {
-            if (item.getId() == id) {//Existe pelo menos o item com esse id
-                try {
-                    getContaLogada().renovarItem(id);
-                } catch (ItemNaoEmprestado e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        }
-    }
-
-    /**
-     * Função que verifca se existe multa na contaLogada.
-     * Caso exista, chama o método de pagar multa (Classe do Usuário).
-     * Caso não, envia uma mensagem e sai do método.
-     */
-
-
 
     /**
      * Busca pelo CPF na lista de Super Usuários para verificar no login se é um usuário comum ou um administrador.
-     * @param cpf
-     * @return
+     * @param cpf String
+     * @return boolean
      */
 
     public boolean buscarSuperUsuario(String cpf) {
@@ -286,77 +226,22 @@ public class Biblioteca {
         return false;
     }
 
-    /**
-     * Faz um set que muda o valor do SuperLogado para o valor do Objeto de super usuário que foi logado de acordo com as informções fornecidas.
-     * @param nome String (compara com as Strings da lista de super usuários já cadastrados)
-     * @param cpf String (compara com os CPF's da lista de super usuários já cadastrados)
-     * @param senha String (compara com as senhas da lista de super usuários já cadastrados)
-     * @throws InformacoesInvalidas se algum dos dados fornecidos não existir comoum super usuário da biblioteca, lança a excessão
-     */
-    public void logarSuper(String nome, String cpf, String senha) throws InformacoesInvalidas {
-        for (SuperUsuario user : getFuncionarios()) {
-            if (user.getNome().equals(nome) && user.getCpf().equals(cpf)) {
-                if (user.verificarSenha(senha)) {
-                    this.superLogado = user;
-                    return;
-                } else {
-                    throw new InformacoesInvalidas("Não foi possível logar (senha inválida)");
-                }
-            }
-        }
-        throw new InformacoesInvalidas("Não foi possível logar (informações inválidas)");
-    }
 
     /**
-     * Lista todeos os itens presentes na biblioteca e algumas de suas informações.
+     * Adiciona os itens na biblioteca
+     * @param item Item
      */
-    public void verItensBiblioteca() {
-        for (Item item : getItens()) {
-            System.out.println("Livro: ");
-            System.out.println("Titulo: " + item.getTitulo());
-            System.out.println("Autor: " + item.getAutor());
-            System.out.println("ID: " + item.getId());
-            System.out.println("Ano publicação: " + item.getAnoPublicacao());
-            if (item instanceof Livro) {
-                System.out.println("Editora" + ((Livro) item).getEditora());
-                System.out.println("ISBN" + ((Livro) item).getIsbn());
-            } else if (item instanceof Revista) {
-                System.out.println("Volume: " + ((Revista) item).getVolume());
-                System.out.println("Número: " + ((Revista) item).getNumero());
-            } else {
-                System.out.println("Volume: " + ((CD)item).getVolume());
-                System.out.println("Gravadora: " + ((CD)item).getGravadora());
-            }
-        }
-    }
-
-    public void verHistorico() {
-        contaLogada.verHistorico();
-    }
-
-    /**
-     * Lista os usuários para uma função da Super Usuário.
-     * Por questões de privacidade não mostra todas as informações, mas apenas o nome e matrícula para ver quais usuários estão cadastrados.
-     */
-    public void listaUsuarios() {
-        for (Usuario user : this.usuarios) {
-            System.out.println("Nome" + user.getNome());
-            System.out.println("matrícula" + user.getMatricula());
-            System.out.println("---------------------------");
-        }
-    }
-
-    /**
-     * Adicioana o item à lista de itens da biblioteca.
-     */
-    public void adicionarItem() {
-        getItens().add(this.superLogado.adicionarItem());
-    }
     public void adicionarItemGUI(Item item) {
         getItens().add(item);
     }
 
-    //Métodos para GUI
+    /**
+     * Realiza o login
+     * @param nome String nome para verificar
+     * @param cpf String CPF para verificar
+     * @param senha String senha para verificar
+     * @throws InformacoesInvalidas se houver erro ao conectar
+     */
     public void loginGui(String nome,String cpf, String senha) throws InformacoesInvalidas {
         for (SuperUsuario s : getFuncionarios()) {
             if (s.getCpf().equals(cpf) && s.getNome().equals(nome)) {
@@ -381,14 +266,36 @@ public class Biblioteca {
         throw new InformacoesInvalidas("Usuário não encontrado");
     }
 
+    /**
+     * Adiciona o empréstimo
+     * @param item Item
+     * @param dia dia
+     * @param mes mes
+     * @param ano ano
+     * @throws InformacoesInvalidas se houver algum erro nas informações passadas
+     */
     public void adicionarEmprestimo(Item item,  String dia, String mes, String ano) throws InformacoesInvalidas {
         contaLogada.emprestarGUI(item,  dia,  mes,  ano);
     }
 
+    /**
+     * Devolve o item
+     * @param e Emprestimo a ser devolvido
+     * @param dia dia de devolução
+     * @param mes mes de devolução
+     * @param ano ano de devolução
+     * @throws ItemNaoEmprestado se houver algum erro nas informações passadas
+     */
     public void devolverGUI(Emprestimo e, String dia, String mes, String ano) throws ItemNaoEmprestado {
        contaLogada.devolverGUI(e, dia, mes, ano);
     }
 
+    /**
+     * Procura o empréstimo
+     * @param identificador int id
+     * @return Emprestimo
+     * @throws ItemNaoEmprestado se o item não foi emprestado
+     */
     public Emprestimo procurarEmprestimo (String identificador) throws ItemNaoEmprestado {
         int id = -1;
         if (verificaNum(identificador)) {
@@ -398,6 +305,11 @@ public class Biblioteca {
             return contaLogada.procurarEmprestimo(identificador);
         }
     }
+
+    /**
+     * Renova todos os itens -> adiciona mais 10 dias
+     * @throws ItemNaoEmprestado se não tiver empresimos
+     */
     public void renovarTodosGUI () throws ItemNaoEmprestado {
             contaLogada.renovarTodosGUI();
     }
@@ -415,6 +327,12 @@ public class Biblioteca {
         }
         usuarios.add(user);
     }
+
+    /**
+     * Adiciona o funcionário se não tiver um usuário com esses dados
+     * @param user Usuario
+     * @throws Exception se já tiver alguém com esses dados
+     */
     public void adicionarSuper(SuperUsuario user) throws Exception {
         for (SuperUsuario u : getFuncionarios()) {
             if (u.getCpf().equals(user.getCpf()) || u.getMatricula() == user.getMatricula()) {
@@ -424,6 +342,12 @@ public class Biblioteca {
         funcionarios.add(user);
     }
 
+    /**
+     * Cadastra o super usuário
+     * @param cod (int) código
+     * @param senha (String) senha
+     * @throws InformacoesInvalidas se já tiver um usuário com os mesmos dados
+     */
     public void SuperUserAcessoCadastro(int cod, String senha) throws InformacoesInvalidas {
         if (this.cod == cod && this.senhaSuper.equals(senha)) {
             return;

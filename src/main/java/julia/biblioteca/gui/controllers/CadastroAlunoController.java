@@ -20,21 +20,44 @@ import java.util.ResourceBundle;
  * Implementa a interface Initializable
  */
 public class CadastroAlunoController implements Initializable {
+    /**
+     * TextField para pegar o nome do usuário
+     */
     @FXML
     private TextField tf_nome;
+    /**
+     * TextField para pegar a matrícula do usuário
+     */
     @FXML
     private TextField tf_matricula;
+    /**
+     * TextField para pegar o CPF do usuário
+     */
     @FXML
     private TextField tf_cpf;
+    /**
+     * TextField para pegar a senha do usuário
+     */
     @FXML
     private PasswordField tf_password;
+    /**
+     * PassWordField para pegar o curso do aluno
+     */
     @FXML
     private TextField tf_curso;
+    /**
+     * TextField para pegar o período do aluno
+     */
     @FXML
     private TextField tf_periodo;
-
+    /**
+     * Botão para cadastrar (Button)
+     */
     @FXML
     private Button button_cadastro;
+    /**
+     * Alarme para caso haja algum erro
+     */
     @FXML
     private Label alarme;
 

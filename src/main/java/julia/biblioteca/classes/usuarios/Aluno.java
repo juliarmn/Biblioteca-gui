@@ -30,38 +30,6 @@ public class Aluno extends Usuario {
     }
 
     /**
-     * Acessa o nome do curso (get)
-     * @return curso (String)
-     */
-
-    public String getCurso() {
-        return curso;
-    }
-    /**
-     * Para modificar o valor guardado na variável curso (String)
-     * @param curso (String)
-     */
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-    /**
-     * Acessa o período do curso (get)
-     * @return período (String)
-     */
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    /**
-     * Para modificar o valor guardado na variável periodo (String)
-     * @param periodo (String)
-     */
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
-    }
-
-    /**
      * Calcula a multa do aluno durante os dias desde a data prevista de devolução (caso ele não devolva o item).
      * É 5 reais por dia.
      * @param quantidadeDeDias (long) Quantidade de dia que a multa foi contada

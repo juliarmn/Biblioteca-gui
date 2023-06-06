@@ -11,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+/**
+ * Controller para menu
+ */
 public class MenuUserController {
 
     @FXML
@@ -44,6 +47,9 @@ public class MenuUserController {
     @FXML
     private Label alerta;
 
+    /**
+     * Verifica o botão clicado e direciona a opção para seu respectivo elemento fxml da GUI
+     */
     @FXML
     public void initialize() {
 

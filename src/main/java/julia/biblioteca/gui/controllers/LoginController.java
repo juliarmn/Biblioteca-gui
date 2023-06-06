@@ -14,24 +14,48 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller do login que implementa a interface Initializable
+ */
 public class LoginController implements Initializable {
-
+    /**
+     * Nome do usuário -> TextField
+     */
     @FXML
     private TextField tf_nome;
-
+    /**
+     * CPF do usuário -> TextField
+     */
     @FXML
     private TextField tf_cpf;
-
+    /**
+     * Senha do Usuário -> TextField
+     */
     @FXML
     private PasswordField tf_password;
-
+    /**
+     * Button botão para efetuar o login e entrar no menu
+     */
     @FXML
     private Button button_login;
-
+    /**
+     * Button botão para ir para a área de cadastro
+     */
     @FXML
     private Button button_cadastro;
+    /**
+     * Mensagem de erro
+     */
     @FXML
     private Label erro;
+
+    /**
+     * Com botão login verifica se tem campos vazios
+     * Faz login e entra em um menu
+     * Case aperte o botão cadastro vai para um template de opção de cadastro
+     * @param url URL
+     * @param rb ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

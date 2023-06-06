@@ -38,13 +38,6 @@ public class CD extends Item {
         return volume;
     }
 
-    /**
-     * Permite alterar o valor do volume.
-     * @param volume inteiro
-     */
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
 
     /**
      * Permite visualizar o valor da gravadora do CD.
@@ -53,13 +46,7 @@ public class CD extends Item {
     public String getGravadora() {
         return gravadora;
     }
-    /**
-     * Permite alterar o nome da gravadora.
-     * @param gravadora String
-     */
-    public void setGravadora(String gravadora) {
-        this.gravadora = gravadora;
-    }
+
 
     /**
      * Método sobrescrito sa super classe

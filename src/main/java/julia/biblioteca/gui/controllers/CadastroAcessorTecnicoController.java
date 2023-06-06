@@ -20,19 +20,39 @@ import java.util.ResourceBundle;
  * Initializable é implementado
  */
 public class CadastroAcessorTecnicoController implements Initializable {
+    /**
+     * TextField para pegar o nome do usuário
+     */
     @FXML
     private TextField tf_nome;
+    /**
+     * TextField para pegar a matrícula do usuário
+     */
     @FXML
     private TextField tf_matricula;
+    /**
+     * TextField para pegar o CPF do usuário
+     */
     @FXML
     private TextField tf_cpf;
+    /**
+     * TextField para pegar a senha do usuário
+     */
     @FXML
     private PasswordField tf_password;
+    /**
+     * PassWordField para pegar a seção do acessor
+     */
     @FXML
     private TextField tf_secao;
-
+    /**
+     * Botão para cadastrar (Button)
+     */
     @FXML
     private Button button_cadastro;
+    /**
+     * Alarme para caso haja algum erro
+     */
     @FXML
     private Label alarme;
 

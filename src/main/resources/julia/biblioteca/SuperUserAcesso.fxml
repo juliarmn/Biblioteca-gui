@@ -25,7 +25,7 @@
                 </Label>
                 <TextField fx:id="tf_chave" layoutX="71.0" layoutY="187.0" prefHeight="27.0" prefWidth="478.0" promptText="Chave mega secreta" />
             <PasswordField fx:id="tf_senha" layoutX="75.0" layoutY="276.0" prefHeight="27.0" prefWidth="478.0" promptText="Senha" />
-                <Button fx:id="button_entrar" layoutX="260.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: #ea6564;" text="Entrar">
+                <Button fx:id="button_entrar" layoutX="367.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: #ea6564;" text="Entrar">
                     <font>
                         <Font name="Noto Sans Mono Bold" size="14.0" />
                     </font>
@@ -35,6 +35,11 @@
                   <Font name="Noto Sans Mono Regular" size="14.0" />
                </font>
             </Label>
+            <Button fx:id="button_sair" layoutX="184.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: #ea6564;" text="Sair">
+               <font>
+                  <Font name="Noto Sans Mono Bold" size="14.0" />
+               </font>
+            </Button>
             </children></AnchorPane>
         <Region prefHeight="200.0" prefWidth="200.0" />
     </children>

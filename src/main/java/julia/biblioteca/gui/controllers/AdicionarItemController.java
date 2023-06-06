@@ -21,24 +21,54 @@ import java.util.ResourceBundle;
  * Implementa Initializable (interface)
  */
 public class AdicionarItemController implements Initializable {
+    /**
+     * TextField para pegar a informação de título
+     */
     @FXML
     private TextField tf_titulo;
+    /**
+     * TextField para pegar a informação de autor
+     */
     @FXML
     private TextField tf_autor;
+    /**
+     * TextField para pegar a quantidade de itens
+     */
     @FXML
     private TextField tf_qtd;
+    /**
+     * TextField para pegar o ano de publicação
+     */
     @FXML
     private TextField tf_ano;
+    /**
+     * TextField do valor extra 1 (cada item tem um tipo específico)
+     */
     @FXML
     private TextField tf_extra1;
+    /**
+     * TextField do valor extra 2 (cada item tem um tipo específico)
+     */
     @FXML
     private TextField tf_extra2;
+    /**
+     * TextField do tipo de item
+     */
     @FXML
     private TextField tf_tipo;
+    /**
+     * Botão para sair (tipo Button)
+     */
     @FXML
     private Button button_sair;
+    /**
+     * Botão para adicionar o item (tipo Button)
+     */
     @FXML
     private Button button_adicionar;
+    /**
+     * Label para mandar uma mensagem de alerta
+     */
     @FXML
     private Label alerta;
 

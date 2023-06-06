@@ -39,13 +39,7 @@ public class Revista extends Item {
         return volume;
     }
 
-    /**
-     * Permite modificar o atributo de volume
-     * @param volume (inteiro) novo valor a ser assumido
-     */
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
+
     /**
      * Acessa o atributo de número da revista
      * @return revista (int)
@@ -53,13 +47,7 @@ public class Revista extends Item {
     public int getNumero() {
         return numero;
     }
-    /**
-     * Permite modificar o atributo de número
-     * @param numero (inteiro) novo valor a ser assumido
-     */
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+
     /**
      * Método sobrescrito sa super classe
      * Transformar o nome da classe para String (mostrar qual a classe que herdou)

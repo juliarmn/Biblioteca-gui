@@ -14,16 +14,31 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Renovar os itens
+ */
 public class RenovarController implements Initializable {
-
+    /**
+     * Label para a mensagem que indica se conseguiu renovar
+     */
     @FXML
     private Label label_mensagem;
-
+    /**
+     * Botão para voltar
+     */
     @FXML
     private Button button_voltar;
-
+    /**
+     * Variável estática para contar os itens a serem renovados
+     */
     public static int i;
 
+    /**
+     * Verifica se tem multa, caso não tenha, chama um método que renova todos os itens
+     * Tem um voltar que volta para o menu
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Biblioteca biblioteca = DBUtils.getDisplay().getBiblioteca();

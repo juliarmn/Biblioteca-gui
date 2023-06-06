@@ -15,7 +15,6 @@ public class Validacoes {
      * @param ano inserido pelo usuário
      * @return boolean que indica se o usuário inseriu uma data válida
      */
-
     public static boolean validaAno(int ano) {
         if (ano < 2010 || ano > 2023) {
             return false;

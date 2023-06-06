@@ -15,22 +15,54 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Cadastro do super usuário -> Controller para o cadastro do super usuário
+ * Implementa a interface Initializable
+ */
 public class CadastroSuperController implements Initializable {
+    /**
+     * TextField para pegar o nome do usuário
+     */
     @FXML
     private TextField tf_nome;
+    /**
+     * TextField para pegar a matrícula do usuário
+     */
     @FXML
     private TextField tf_matricula;
+    /**
+     * TextField para pegar o CPF do usuário
+     */
     @FXML
     private TextField tf_cpf;
+    /**
+     * PassWordField para pegar a senha do usuário
+     */
     @FXML
     private PasswordField tf_password;
+    /**
+     * TextField para pegar o código do usuário
+     */
     @FXML
     private TextField tf_cod;
-
+    /**
+     * Botão do tipo Button que cadastra o usuário
+     */
     @FXML
     private Button button_cadastro;
+    /**
+     * Alarme para colocar mensagem de erro
+     */
     @FXML
     private Label alarme;
+
+    /**
+     * Método que sobrescreve o método da Interface
+     * Se não estiver nada em nenhum campo e clicar em cadastrar manda um alerta
+     * Chama um método para cadastrar Super Usuário
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

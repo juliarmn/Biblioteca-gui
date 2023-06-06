@@ -25,22 +25,7 @@ public class AcessorTecnico extends Usuario {
         this.tipoDaSecao = tipoDaSecao;
     }
 
-    /**
-     * Acesso aos dados guardados no campo (atributo) tipoDaSecao
-     * @return tipoDaSecao
-     */
 
-    public String getTipoDaSecao() {
-        return tipoDaSecao;
-    }
-
-    /**
-     * Modificar o valor do atributo tipoDaSecao
-      * @param tipoDaSecao
-     */
-    public void setTipoDaSecao(String tipoDaSecao) {
-        this.tipoDaSecao = tipoDaSecao;
-    }
 
     /**
      * Calcula a multa do Acessor Técnico

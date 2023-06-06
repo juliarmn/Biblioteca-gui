@@ -7,19 +7,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import julia.biblioteca.classes.Biblioteca;
-import julia.biblioteca.classes.itens.CD;
-import julia.biblioteca.classes.itens.Item;
-import julia.biblioteca.classes.itens.Livro;
-import julia.biblioteca.classes.itens.Revista;
-import julia.biblioteca.classes.usuarios.SuperUsuario;
 import julia.biblioteca.classes.usuarios.Usuario;
 import julia.biblioteca.emprestimo.Emprestimo;
 import julia.biblioteca.gui.DBUtils;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Verifica os usuários presentes na biblioteca
+ */
 public class VerUserController implements Initializable {
     @FXML
     private Label label_tipo;
@@ -33,10 +29,14 @@ public class VerUserController implements Initializable {
     private Button button_prox;
     @FXML
     private Button button_sair;
-
-
     public static int i;
 
+    /**
+     * Se clicar próximo vai para o próximo item
+     * Se clicar sair vai para o menu do usuário logado (Super ou comum)
+     * @param url URL
+     * @param resourceBundle ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Biblioteca biblioteca = DBUtils.getDisplay().getBiblioteca();
@@ -68,6 +68,11 @@ public class VerUserController implements Initializable {
         });
 
     }
+
+    /**
+     * Mostra os dados do item
+     * @param user Usuario
+     */
     private void setItem(Usuario user) {
         label_tipo.setText(user.toString());
         label_nome.setText(user.getNome());
@@ -75,6 +80,11 @@ public class VerUserController implements Initializable {
         label_emprestimos.setText(contaEmprestimos(user));
     }
 
+    /**
+     * Conta quantos empréstimos o usuário tem
+     * @param user Usuario
+     * @return valor do contador
+     */
     private String contaEmprestimos (Usuario user) {
         int count = 0;
         for (Emprestimo e : user.getEmprestimo()) {
